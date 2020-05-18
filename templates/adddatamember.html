@@ -1,0 +1,78 @@
+{% include "header.html" %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title></title>
+</head>
+
+<body>
+  <div class="container">
+    <h1 align="center">เพิ่มข้อมูลสมาชิก</h1>
+
+    <form action="{{ url_for('member.adddata') }}" method="POST" enctype="multipart/form-data">
+
+      <div class="form-group">
+        <label for="recipient-name" class="col-form-label" >ชื่อ:</label>
+        <input type="text" class="form-control"  name="FNAME" required>
+      </div>
+
+      <div class="form-group">
+        <label for="recipient-name" class="col-form-label">นามสกุล:</label>
+        <input type="text" class="form-control"  name="LNAME" required>
+      </div>
+
+      <div class="form-group">
+        <label for="recipient-name" class="col-form-label">เพศ:</label>
+        <select class="custom-select" id="inputGroupSelect02" name="SEX">
+          <option value="ชาย" name="SEX" selected>ชาย</option>
+          <option value="หญิง" name="SEX">หญิง</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="recipient-name" class="col-form-label">วันเกิด:</label>
+        <input type="date" class="form-control"  name="BDATE" required>
+      </div>
+
+      <div class="form-group">
+        <label for="recipient-name" class="col-form-label">อีเมลล์:</label>
+        <input type="email" class="form-control"  name="EMAIL" required>
+      </div>
+
+      <div class="form-group">
+        <input type="file" name="imagemem" accept="image/x-png,image/gif,image/jpeg" onchange="readURL(this);">
+        <img id="blah" src="#" alt="" class="img-thumbnail" >
+      </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="/showmember" class="btn btn-secondary" data-dismiss="modal">Back</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function readURL(input){
+      alert();
+      console.log("test " + input);
+      if (input.files && input.files[0]) {
+        console.log(input.files[0]);
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $('#blah').attr('src',e.target.result)
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
+{% include "footer.html" %}
